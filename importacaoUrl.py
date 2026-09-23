@@ -10,3 +10,6 @@ iris = pd.read_csv(url, names=colnames)
 print(iris.head())
 print(iris.shape)
 print(f"Tipo de dados da variável iris:  {type(iris)}")
+
+#Quantidade de linhas da tabela/DataFrame iris
+print(f"Quantidade de linhas usando a função len(): {len(iris.Class)}")
