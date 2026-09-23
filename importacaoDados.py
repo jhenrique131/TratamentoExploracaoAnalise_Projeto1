@@ -8,6 +8,9 @@ arquivo_csv = "E:/0 - Portifolio/python/TratamentoExploracaoAnalise_Projeto1/dad
 covid_sp = pd.read_csv(arquivo_csv, sep=';', encoding='utf-8')
 
 print(covid_sp.head())
+print(covid_sp.shape)
+
+
 
 
 
