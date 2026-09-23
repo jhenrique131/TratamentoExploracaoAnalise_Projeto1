@@ -9,3 +9,4 @@ iris = pd.read_csv(url, names=colnames)
 
 print(iris.head())
 print(iris.shape)
+print(f"Tipo de dados da variável iris:  {type(iris)}")
