@@ -15,4 +15,9 @@ covid_sp.rename(columns={'nome_munic':'municipio'}, inplace=True)#Inplace=True f
 #Alterando a coluna de datahora para data
 covid_sp.rename(columns={'datahora':'data'}, inplace=True)
 
+#print(covid_sp.head())
+
+#Renomeando várias colunas ao mesmo tempo
+covid_sp.rename(columns={'map_leg':'rotulo_mapa', 'map_leg_s':'codigo_mapa'}, inplace=True)
+
 print(covid_sp.head())
