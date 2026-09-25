@@ -18,3 +18,5 @@ print(iris.target)
 
 #Descrição referente aos códigos
 print(iris.target_names)
+
+
