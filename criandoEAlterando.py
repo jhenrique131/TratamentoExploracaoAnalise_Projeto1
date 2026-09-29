@@ -1,3 +1,4 @@
+import pandas as pd
 from excluindoColunas import exclui_colunas
 
 covid_sp_alterado = exclui_colunas()
@@ -17,5 +18,17 @@ covid_sp_alterado['densidade'] = covid_sp_alterado['pop']/covid_sp_alterado['are
 #print(covid_sp_alterado.shape)
 
 #Criando uma coluna com índices
-#lista = list(range(1,374035)) #Arredonda para 374035 para pegar 374034
+lista = list(range(1,374035)) #Arredonda para 374035 para pegar 374034
 #print(lista)
+
+#Transforma a lista em um DataFrame
+df = pd.DataFrame(lista, columns=['indice'])
+#print(df)
+
+#Juntando os dois DataFrames - Incluindo o campo índice da tabela
+covid_sp_alterado = pd.concat([covid_sp_alterado,df], axis=1)#axis=1 - Junta pela coluna
+#print(covid_sp_alterado.head())
+
+#Colocando o campo índice no começo da tabela
+covid_sp_alterado = covid_sp_alterado.reindex(columns=['indice'] + list(covid_sp_alterado.columns[:-1]))
+print(covid_sp_alterado.head())
