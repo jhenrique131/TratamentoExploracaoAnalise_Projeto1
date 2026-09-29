@@ -11,6 +11,11 @@ covid_sp_alterado['area'] = covid_sp_alterado['area']/100 #ou
 #print(covid_sp_alterado.head())
 #print(covid_sp_alterado.shape)
 
+#Criação de coluna Densidade Demográfica (hsb/km2)
+covid_sp_alterado['densidade'] = covid_sp_alterado['pop']/covid_sp_alterado['area']
+#print(covid_sp_alterado.head())
+#print(covid_sp_alterado.shape)
+
 #Criando uma coluna com índices
-lista = list(range(1,374035)) #Arredonda para 374035 para pegar 374034
-print(lista)
+#lista = list(range(1,374035)) #Arredonda para 374035 para pegar 374034
+#print(lista)
