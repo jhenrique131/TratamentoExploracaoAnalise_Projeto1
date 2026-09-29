@@ -31,4 +31,21 @@ covid_sp_alterado = pd.concat([covid_sp_alterado,df], axis=1)#axis=1 - Junta pel
 
 #Colocando o campo índice no começo da tabela
 covid_sp_alterado = covid_sp_alterado.reindex(columns=['indice'] + list(covid_sp_alterado.columns[:-1]))
-print(covid_sp_alterado.head())
+#print(covid_sp_alterado.head())
+
+#Contagem dos registros das variáveis (colunas)
+#Contagem de registros de colunas
+#print(covid_sp_alterado['semana_epidem'].value_counts())
+
+#Ordenando os registros pelo índice
+#print(covid_sp_alterado['semana_epidem'].value_counts().sort_index())
+
+#Outra forma é utilizando a função Counter - A resposta é em formato de dicionário
+from collections import Counter
+#print(Counter(covid_sp_alterado.semana_epidem))
+
+#Municipios que tiveram novos obitos maior que 50
+#Trás quantas vezes registrou obitos novos maior que 50 nos municípios
+#Ou seja, mais de 50 pessoas
+print(covid_sp_alterado.query('obitos_novos > 100')['municipio'].value_counts())
+
