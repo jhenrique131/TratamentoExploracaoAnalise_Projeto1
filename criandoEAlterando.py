@@ -74,10 +74,16 @@ from collections import Counter
 y = covid_sp_alterado.iloc[:,1].values
 #Agora é reconhecido como Arry([])
 
-print(type(y))
+#print(type(y))
 
 #Transformando um arry([]) em uma lista[]
 lista_y = list(y.to_numpy().flatten())
-print(lista_y)
+#print(lista_y)
+
+#print(type(lista_y))
+
+#Transforma a lista em um DataFrame
+df = pd.DataFrame(lista_y, columns=['municipio'])
+print(df)
 
 
