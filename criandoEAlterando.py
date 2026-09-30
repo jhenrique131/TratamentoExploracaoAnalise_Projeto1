@@ -64,3 +64,14 @@ from collections import Counter
 #Trás somente a coluna da posição 1
 y = covid_sp_alterado.iloc[:,1]
 print(y)
+
+#O y está sendo reconhecido como uma Série
+print(type(y))
+
+#Para que não seja reconhecido como uma Série, inclua .values no final
+y = covid_sp_alterado.iloc[:,1].values
+#Agora é reconhecido como Arry([])
+
+print(type(y))
+
+
