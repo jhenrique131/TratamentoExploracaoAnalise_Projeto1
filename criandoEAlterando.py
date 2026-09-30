@@ -53,10 +53,14 @@ from collections import Counter
 #iloc = 'i' representa o índice
 #[:,5:13] - Antes da virgula representa LINHAS.
 #[:,5:13] - Após a virgula representa COLUNAS
-x = covid_sp_alterado.iloc[:,5:13]
-print(f"Colunas por índices: \n{x}")
+#x = covid_sp_alterado.iloc[:,5:13]
+#print(f"Colunas por índices: \n{x}")
 
 #Quando tem antes da virgula apenas dois-pontos(:), queremos pegar todas as LINHAS
 #5 e 13 são os intervalos de colunas - Do 5 até a 13 (seria na verdade a 12º coluna)
 
+#print(type(x))
 
+#Trás somente a coluna da posição 1
+y = covid_sp_alterado.iloc[:,1]
+print(y)
