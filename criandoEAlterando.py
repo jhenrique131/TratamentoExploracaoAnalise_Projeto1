@@ -47,5 +47,16 @@ from collections import Counter
 #Municipios que tiveram novos obitos maior que 50
 #Trás quantas vezes registrou obitos novos maior que 50 nos municípios
 #Ou seja, mais de 50 pessoas
-print(covid_sp_alterado.query('obitos_novos > 100')['municipio'].value_counts())
+#print(covid_sp_alterado.query('obitos_novos > 100')['municipio'].value_counts())
+
+#Selecionar variáveis(colunas) por índices
+#iloc = 'i' representa o índice
+#[:,5:13] - Antes da virgula representa LINHAS.
+#[:,5:13] - Após a virgula representa COLUNAS
+x = covid_sp_alterado.iloc[:,5:13]
+print(f"Colunas por índices: \n{x}")
+
+#Quando tem antes da virgula apenas dois-pontos(:), queremos pegar todas as LINHAS
+#5 e 13 são os intervalos de colunas - Do 5 até a 13 (seria na verdade a 12º coluna)
+
 
