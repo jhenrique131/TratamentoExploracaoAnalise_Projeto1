@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+import statsmodels.api as sm
 from excluindoColunas import exclui_colunas
 
 covid_sp_alterado = exclui_colunas()
@@ -62,16 +64,20 @@ from collections import Counter
 #print(type(x))
 
 #Trás somente a coluna da posição 1
-y = covid_sp_alterado.iloc[:,1]
-print(y)
+#y = covid_sp_alterado.iloc[:,1]
+#print(y)
 
 #O y está sendo reconhecido como uma Série
-print(type(y))
+#print(type(y))
 
 #Para que não seja reconhecido como uma Série, inclua .values no final
 y = covid_sp_alterado.iloc[:,1].values
 #Agora é reconhecido como Arry([])
 
 print(type(y))
+
+#Transformando um arry([]) em uma lista[]
+lista_y = list(y.to_numpy().flatten())
+print(lista_y)
 
 
