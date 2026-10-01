@@ -98,5 +98,6 @@ covid_sp_alterado2 = covid_sp_alterado2.drop(covid_sp_alterado.index[4:7])
 print(f"Excluindo linas por índices - Intervalo de valores: \n{covid_sp_alterado2}")
 
 
-
-
+#Reordenação dos índices após exclusão - Reset no índice
+covid_sp_alterado2 = covid_sp_alterado2.reset_index(drop=True)
+print(f"Índice reordenado: \n{covid_sp_alterado2}")
