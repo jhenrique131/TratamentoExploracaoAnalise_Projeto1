@@ -43,7 +43,7 @@ covid_sp_alterado = covid_sp_alterado.reindex(columns=['indice'] + list(covid_sp
 #print(covid_sp_alterado['semana_epidem'].value_counts().sort_index())
 
 #Outra forma é utilizando a função Counter - A resposta é em formato de dicionário
-from collections import Counter
+#from collections import Counter
 #print(Counter(covid_sp_alterado.semana_epidem))
 
 #Municipios que tiveram novos obitos maior que 50
@@ -71,21 +71,22 @@ from collections import Counter
 #print(type(y))
 
 #Para que não seja reconhecido como uma Série, inclua .values no final
-y = covid_sp_alterado.iloc[:,1].values
+#y = covid_sp_alterado.iloc[:,1].values
 #Agora é reconhecido como Arry([])
 
 #print(type(y))
 
 #Transformando um arry([]) em uma lista[]
-lista_y = list(y.to_numpy().flatten())
+#lista_y = list(y.to_numpy().flatten())
 #print(lista_y)
 
 #print(type(lista_y))
 
 #Transforma a lista em um DataFrame
-df = pd.DataFrame(lista_y, columns=['municipio'])
-print(df)
+#df = pd.DataFrame(lista_y, columns=['municipio'])
+#print(df)
 
 #Excluinda, Filtrando e Substituindo registros (Linhas)
 #Excluindo linhas por índices (Valores Absolutos)
-
+covid_sp_alterado2 = covid_sp_alterado.drop(covid_sp_alterado.index[[1,3]])
+print(f"Valores excluído por índices: \n{covid_sp_alterado2}")
