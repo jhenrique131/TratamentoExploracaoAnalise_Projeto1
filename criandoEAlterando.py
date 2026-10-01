@@ -86,4 +86,6 @@ lista_y = list(y.to_numpy().flatten())
 df = pd.DataFrame(lista_y, columns=['municipio'])
 print(df)
 
+#Excluinda, Filtrando e Substituindo registros (Linhas)
+#Excluindo linhas por índices (Valores Absolutos)
 
