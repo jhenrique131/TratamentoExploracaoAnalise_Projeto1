@@ -89,4 +89,14 @@ covid_sp_alterado = covid_sp_alterado.reindex(columns=['indice'] + list(covid_sp
 #Excluinda, Filtrando e Substituindo registros (Linhas)
 #Excluindo linhas por índices (Valores Absolutos)
 covid_sp_alterado2 = covid_sp_alterado.drop(covid_sp_alterado.index[[1,3]])
-print(f"Valores excluído por índices: \n{covid_sp_alterado2}")
+print(f"Valores excluído por índices - Valores absolutos: \n{covid_sp_alterado2}")
+#Linhas 1 e 3 foram excluídas
+
+
+#Excluindo lindas por índices (Intervalos de valores)
+covid_sp_alterado2 = covid_sp_alterado2.drop(covid_sp_alterado.index[4:7])
+print(f"Excluindo linas por índices - Intervalo de valores: \n{covid_sp_alterado2}")
+
+
+
+
