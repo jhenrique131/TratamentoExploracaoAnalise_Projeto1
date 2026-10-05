@@ -131,11 +131,43 @@ guarulhos['semana_epidem'] = guarulhos['semana_epidem'].replace([11,12,13], ['on
 
 #Substituir virgula por ponto utilizando lambda
 guarulhos['casos_pc'] = guarulhos['casos_pc'].apply(lambda x: x.replace(',','.'))
-print(f"Substituindo virgula por ponto utilizando lambda: \n{guarulhos.head(30)}")
+#print(f"Substituindo virgula por ponto utilizando lambda: \n{guarulhos.head(30)}")
+
+#Criando colunas com datas
+import datetime
+
+#Cria uma data específica
+data = np.array('2020-02-25', dtype=np.datetime64())
+#print(f"Criando uma data específica: \n{data}")
+
+#Agora estende para todas as outras 579 linhas
+data = data + np.arange(579)
+#print(f"Data estendida para todas as outras 579 linhas: \n{data}")
+
+#Transforma em um DataFrame
+data = pd.DataFrame(data)
+#print(f"Transformação em um DataFrame: \n{data}")
 
 
+#Renomendo a coluna 0 para Data
+data.columns = ['data']
+#print(f"Coluna 0 renomeada para data: \n{data}")
 
+#Concatenando a data com a tabela guarulhos
+guarulhos2 = pd.concat([data,guarulhos], axis=1)
+print(f"Data e tabela guarulhos concatenadas: \n{guarulhos2}")
 
+#Os outros registros ficaram nulos devido os índices da tabela anterior
+#Os índices devem ser resetado para que a nova tabela não fique com os valores nulos
+
+#Reordenando os índices para coincidir a tabela 'data' com a tabela 'guarulhos'
+guarulhos = guarulhos.reset_index(drop=True)
+#print(f"Reordenação dos íncides da tabela: \n{guarulhos}")
+
+#Após reordenação dos índices, fazemos a concatenação das duas tabelas, 'data' e 'guarulhos'
+#Concatenando a data com a tabela guarulhos
+guarulhos2 = pd.concat([data, guarulhos], axis=1)
+#print(f"Concatenação da data com a tabela guarulhos: \n{guarulhos2}")
 
 
 
