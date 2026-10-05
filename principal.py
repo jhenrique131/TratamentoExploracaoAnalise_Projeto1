@@ -169,7 +169,7 @@ guarulhos = guarulhos.reset_index(drop=True)
 guarulhos2 = pd.concat([data, guarulhos], axis=1)
 #print(f"Concatenação da data com a tabela guarulhos: \n{guarulhos2}")
 
-
+#Valores Missing (NaN)
 
 
 
