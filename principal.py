@@ -94,21 +94,55 @@ covid_sp_alterado2 = covid_sp_alterado.drop(covid_sp_alterado.index[[1,3]])
 
 
 #Excluindo lindas por índices (Intervalos de valores)
-#covid_sp_alterado2 = covid_sp_alterado2.drop(covid_sp_alterado.index[4:7])
+covid_sp_alterado2 = covid_sp_alterado2.drop(covid_sp_alterado.index[4:7])
 #print(f"Excluindo linas por índices - Intervalo de valores: \n{covid_sp_alterado2}")
 
 
 #Reordenação dos índices após exclusão - Reset no índice
-#covid_sp_alterado2 = covid_sp_alterado2.reset_index(drop=True)
+covid_sp_alterado2 = covid_sp_alterado2.reset_index(drop=True)
 #print(f"Índice reordenado: \n{covid_sp_alterado2}")
 
 #Excluindo as linhas onde estão os registros 'ignorado'
 #Econtrando os registros
 ignorado = covid_sp_alterado2.loc[covid_sp_alterado2['municipio'] == 'Ignorado']
-print(f"Excluindo registros 'ignorado': \n{ignorado}")
+#print(f"Excluindo registros 'ignorado': \n{ignorado}")
 
-print(ignorado.shape)
+#print(ignorado.shape)
 
 #Pega os registros diferentes de 'Ignorado' - Exclui os registros 'Ignorado'
 covid_sp_alterado2 = covid_sp_alterado2.loc[covid_sp_alterado2['municipio'] != 'Ignorado']
-print(f"Registros 'Ignorado' do campo municipio excluídos: \n{covid_sp_alterado2}")
+#print(f"Registros 'Ignorado' do campo municipio excluídos: \n{covid_sp_alterado2}")
+
+#Análise de apenas um município
+guarulhos = covid_sp_alterado2.loc[covid_sp_alterado2['municipio'] == 'Guarulhos']
+#print(f"Análise do município Guarulhos: \n{guarulhos}")
+
+#Excluindo colunas
+guarulhos.drop(columns=['data','municipio'], inplace=True)
+#print(f"Colunas data e municipio excluídas: \n{guarulhos.head()}")
+
+#Substituir código por descrição - Dicionário{}
+guarulhos['semana_epidem'] = guarulhos['semana_epidem'].replace({9:'nove', 10:'dez'})
+#print(f"Substituição de código por descrição - Dicionario{}: \n{guarulhos.head()}")
+
+#Substituir código por descrição - lista[]
+guarulhos['semana_epidem'] = guarulhos['semana_epidem'].replace([11,12,13], ['onze','doze','treze'])
+#print(f"Substituição de código por descrição - Lista[]: \n{guarulhos.head()}")
+
+#Substituir virgula por ponto utilizando lambda
+guarulhos['casos_pc'] = guarulhos['casos_pc'].apply(lambda x: x.replace(',','.'))
+print(f"Substituindo virgula por ponto utilizando lambda: \n{guarulhos.head(30)}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
