@@ -187,8 +187,20 @@ covid_sp_alterado = covid_sp_alterado.loc[covid_sp_alterado['municipio'] != 'Ign
 #print(covid_sp_alterado['casos'].isnull().sum())
 
 #Verificando a quantidade de valores nulos por coluna na tabela original
-print(covid_sp.isnull().sum())   
+#print(covid_sp.isnull().sum())   
 
+#Excluindo todos os valores Missing
+covid_sp2 = covid_sp.dropna()
+#print(covid_sp2.isnull().sum())
+
+#Substituir os valores Missing pela Mediana
+covid_sp['obitos_novos'].fillna(covid_sp['obitos_novos'].median(), inplace=True)
+
+#Substituir os valores Missing pela Média
+covid_sp['obitos_novos'].fillna(covid_sp['obitos_novos'].mean(), inplace=True)
+
+#Substituindo os valores Missing por qualquer outro valor
+covid_sp['obitos_novos'].fillna(10, inplace=True)
 
 
 
