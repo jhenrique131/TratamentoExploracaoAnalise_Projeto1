@@ -2,6 +2,9 @@ import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 from excluindoColunas import exclui_colunas
+from importacaoDados import carrega_dados_covid_sp
+
+covid_sp = carrega_dados_covid_sp()
 
 covid_sp_alterado = exclui_colunas()
 
@@ -155,7 +158,7 @@ data.columns = ['data']
 
 #Concatenando a data com a tabela guarulhos
 guarulhos2 = pd.concat([data,guarulhos], axis=1)
-print(f"Data e tabela guarulhos concatenadas: \n{guarulhos2}")
+#print(f"Data e tabela guarulhos concatenadas: \n{guarulhos2}")
 
 #Os outros registros ficaram nulos devido os índices da tabela anterior
 #Os índices devem ser resetado para que a nova tabela não fique com os valores nulos
@@ -170,8 +173,21 @@ guarulhos2 = pd.concat([data, guarulhos], axis=1)
 #print(f"Concatenação da data com a tabela guarulhos: \n{guarulhos2}")
 
 #Valores Missing (NaN)
+#print(covid_sp_alterado.head(30))
 
+#Pega os registros diferentes de "Ignorado" - Exclui os 'Ignorado'
+#Dessa vez da tabela covid_sp_alterado
+covid_sp_alterado = covid_sp_alterado.loc[covid_sp_alterado['municipio'] != 'Ignorado']
+#print(f"Registros diferentes de 'Ignorado': \n{covid_sp_alterado}")
 
+#Verificando a quantidade de valores nulos por coluna
+#print(covid_sp_alterado.isnull().sum())
+
+#Verificando apenas uma coluna - Quantidade de registros nulos
+#print(covid_sp_alterado['casos'].isnull().sum())
+
+#Verificando a quantidade de valores nulos por coluna na tabela original
+print(covid_sp.isnull().sum())   
 
 
 
